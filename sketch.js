@@ -8,6 +8,25 @@ var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
 
+var gameState= "onSling";
+
+// 
+
+var name="Fadil";
+console.log(name);
+
+var num=23;
+console.log(num);
+
+var arr1=["Fadil1", 200, 400 ];
+console.log(arr1);
+
+var object;
+console.log(object);
+
+object = null;
+console.log(object);
+
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -69,16 +88,20 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gameState!=="launched"){
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
+    
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState="launched";
 }
 
 function keyPressed(){
     if(keyCode === 32){
-        slingshot.attach(bird.body);
+       // slingshot.attach(bird.body);
     }
 }
